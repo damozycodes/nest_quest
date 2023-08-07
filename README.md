@@ -4,36 +4,30 @@
 Authentication:
 - [x] Login
 - [x] SignUp
-- [ ] reset Password
-- [ ] Verify otp
-- [ ] Forgot password
+- [x] Change password
+- [ ] Reset Password
 
 Landlord:
 - [ ] Create Landlord
-- [ ] Get landlord
+- [ ] Get/Update Landlord
+- [ ] Get the rating of a landlord
 
 Listing:
-- [ ] Create Lisitng
-- [ ] Get Lisitng
+- [ ] Create Listing
+- [ ] Get/Update Listing
 - [ ] Delete Listing
-- [ ] Update Listing
-- [ ] Mark Listing as favorite
-- [ ] Get all listing for a particular user
-- [ ] Get detail of a listing
-- [ ] Filter listing
-- [ ] Fetch All roomate
-- [ ] Contact roomate
-- [ ] Filter roomate
-- [ ] Recommended roomate
+- [ ] Add Listing to favorites
+- [ ] Get all listings for a particular landlord
+- [ ] Get a user's favorite listings
+- [ ] Search/filter listings
 
-Review:
+Listing Review:
 - [ ] Create Review
-- [ ] Get All Review
+- [ ] Get All Review of a listing
+- [ ] Get the rating of a listing
 
-Ads:
-- [ ] Create Ads
-- [ ] fetch Ads
-
-Contact:
-- [ ] Contact us
-
+Roommate Matching:
+- [ ] Create a new matching request
+- [ ] Get suggested roommates
+- [ ] Request contact with a suggested roommate
+- [ ] Accept request from potential roommate
