@@ -21,5 +21,5 @@ class LandlordSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Landlord
-        fields = ('user', 'address', 'phone_number')
+        fields = ('address', 'phone_number')
      

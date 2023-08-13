@@ -14,5 +14,5 @@ class Landlord(models.Model):
     phone_number = models.CharField(validators=[phoneRex],max_length=11)
 
     def __str__(self):
-        return f"<landlord email={self.email}>"
+        return f"<landlord email={self.user.email}>"
 
