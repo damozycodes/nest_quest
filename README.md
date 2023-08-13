@@ -8,16 +8,16 @@ Authentication:
 - [ ] Reset Password
 
 Landlord:
-- [ ] Create Landlord
-- [ ] Get/Update Landlord
+- [x] Create Landlord
+- [x] Get/Update Landlord
 - [ ] Get the rating of a landlord
 
 Listing:
-- [ ] Create Listing
-- [ ] Get/Update Listing
-- [ ] Delete Listing
+- [x] Create Listing
+- [x] Get/Update Listing
+- [x] Delete Listing
 - [ ] Add Listing to favorites
-- [ ] Get all listings for a particular landlord
+- [x] Get all listings for a particular landlord
 - [ ] Get a user's favorite listings
 - [ ] Search/filter listings
 
