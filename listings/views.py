@@ -86,5 +86,5 @@ class SearchListingView(generics.ListAPIView):
 			queryset = queryset.order_by(data["sort"])
 		if data.get("reverse") in ("true", "True", "1", "yes", "Yes"):
 			queryset = queryset.reverse()
-			
+
 		return queryset

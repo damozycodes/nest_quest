@@ -59,11 +59,22 @@ class Listing(models.Model):
 	created = models.DateTimeField(auto_now_add= True)
 	updated = models.DateTimeField(auto_now= True)
 
+	sum_ratings = models.PositiveIntegerField(default=0)
+	total_ratings = models.PositiveIntegerField(default=0)
+	rating = models.DecimalField(max_digits=3, decimal_places=1, default=0)
+
 	class Meta:
 		ordering = ["-updated", "-created"]
 
 	def __str__(self):
 		return self.name
-	
+
 	def get_absolute_url(self):
 		return reverse("listings:listing", kwargs= {"pk": self.pk})
+
+	def save(self, *args, **kwargs):
+		if self.total_ratings > 0:
+			self.rating = self.sum_ratings / self.total_ratings
+		else:
+			self.rating = 0
+		super().save(*args, **kwargs)
