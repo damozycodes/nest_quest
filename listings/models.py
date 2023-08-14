@@ -56,6 +56,11 @@ class Listing(models.Model):
 		related_name= "listings",
 		editable= False,
 	)
+	likes = models.ManyToManyField(
+		"users.User",
+		related_name= "liked_listings",
+		verbose_name= "Users who have liked this listing",
+	)
 	created = models.DateTimeField(auto_now_add= True)
 	updated = models.DateTimeField(auto_now= True)
 
