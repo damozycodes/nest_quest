@@ -16,14 +16,14 @@ Listing:
 - [x] Create Listing
 - [x] Get/Update Listing
 - [x] Delete Listing
-- [ ] Add Listing to favorites
+- [x] Add Listing to favorites
 - [x] Get all listings for a particular landlord
-- [ ] Get a user's favorite listings
-- [ ] Search/filter listings
+- [x] Get a user's favorite listings
+- [x] Search/filter listings
 
 Listing Review:
-- [ ] Create Review
-- [ ] Get All Review of a listing
+- [x] Create Review
+- [x] Get All Review of a listing
 - [ ] Get the rating of a listing
 
 Roommate Matching:
