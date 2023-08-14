@@ -21,7 +21,7 @@ class NewListingView(generics.CreateAPIView):
 	"""
 	permission_classes = [permissions.IsAuthenticated, IsLandlord]
 	serializer_class = ListingSerializer
-	
+
 	def perform_create(self, serializer):
 		serializer.save(landlord= self.request.user.landlord)
 
@@ -41,7 +41,7 @@ class ListListingView(generics.ListAPIView):
 	"""
 	permission_classes = [permissions.AllowAny]
 	serializer_class = ListingSerializer
-	
+
 	def get_queryset(self):
 		landlord = get_object_or_404(Landlord, pk= self.kwargs.get("pk"))
 		return Listing.objects.filter(landlord= landlord)
@@ -55,6 +55,7 @@ class SearchSchema(TypedDict):
 	created_max: datetime | None
 	updated_min: datetime | None
 	updated_max: datetime | None
+	min_rating: float | None
 	sort: str | None
 	reverse: str | None
 
@@ -84,11 +85,13 @@ class SearchListingView(generics.ListAPIView):
 			queryset = queryset.filter(updated__gte= data["updated_min"])
 		if data.get("updated_max") is not None:
 			queryset = queryset.filter(updated__lte= data["updated_max"])
+		if data.get("min_rating") is not None:
+			queryset = queryset.filter(rating__gte= data["min_rating"])
 		if data.get("sort") in ("rent", "created", "updated"):
 			queryset = queryset.order_by(data["sort"])
 		if data.get("reverse") in ("true", "True", "1", "yes", "Yes"):
 			queryset = queryset.reverse()
-			
+
 		return queryset
 
 
@@ -104,14 +107,14 @@ class LikeListingView(APIView):
 			return Response(status= status.HTTP_403_FORBIDDEN, data= {
 				"detail": "You cannot like your own listing",
 			})
-		
+
 		if request.user in listing.likes.all():
 			listing.likes.remove(request.user)
 			action = "unliked"
 		else:
 			listing.likes.add(request.user)
 			action = "liked"
-		
+
 		listing.save()
 		return Response(status= status.HTTP_200_OK, data= {
 			"detail": f"You have {action} this listing",
