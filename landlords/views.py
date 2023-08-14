@@ -20,7 +20,7 @@ def create_landlord(request):
 @api_view(['GET', 'PATCH'])
 def landlord_info(request):
     landlord = get_object_or_404(Landlord, user=request.user)
-    
+
     if request.method == 'GET':
         serializer = LandlordSerializer(landlord)
         return Response(serializer.data)
