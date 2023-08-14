@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "users",
     "landlords",
     "listings",
+    "reviews",
 ]
 
 MIDDLEWARE = [
