@@ -40,6 +40,6 @@ class Review(models.Model):
 
 	def __str__(self):
 		return f"<review listing={self.listing.name} reviewer={self.reviewer.email}>"
-	
+
 	def get_absolute_url(self):
 		return reverse("reviews:review", kwargs={"pk": self.pk})

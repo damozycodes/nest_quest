@@ -16,7 +16,7 @@ class NewReviewView(generics.CreateAPIView):
 	"""
 	permission_classes = [permissions.IsAuthenticated]
 	serializer_class = ReviewSerializer
-	
+
 	def perform_create(self, serializer):
 		serializer.save(
 			reviewer= self.request.user,
@@ -52,6 +52,6 @@ class UserReviewView(generics.ListAPIView):
 	"""
 	permission_classes = [permissions.IsAuthenticated]
 	serializer_class = ReviewSerializer
-	
+
 	def get_queryset(self):
 		return Review.objects.filter(reviewer= self.request.user)

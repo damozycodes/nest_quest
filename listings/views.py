@@ -21,7 +21,7 @@ class NewListingView(generics.CreateAPIView):
 	"""
 	permission_classes = [permissions.IsAuthenticated, IsLandlord]
 	serializer_class = ListingSerializer
-
+	
 	def perform_create(self, serializer):
 		serializer.save(landlord= self.request.user.landlord)
 
@@ -41,8 +41,7 @@ class ListListingView(generics.ListAPIView):
 	"""
 	permission_classes = [permissions.AllowAny]
 	serializer_class = ListingSerializer
-	pagination_class = LimitOffsetPagination
-
+	
 	def get_queryset(self):
 		landlord = get_object_or_404(Landlord, pk= self.kwargs.get("pk"))
 		return Listing.objects.filter(landlord= landlord)
