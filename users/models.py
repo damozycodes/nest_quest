@@ -2,6 +2,7 @@ import uuid
 
 from django.contrib.auth.models import AbstractUser, _
 from django.db import models
+from django.urls import reverse
 
 from users import validators 
 
@@ -44,3 +45,6 @@ class User(AbstractUser):
 
 	def is_landlord(self):
 		return hasattr(self, "landlord")
+	
+	def get_absolute_url(self):
+		return reverse("user", kwargs={"pk": self.pk})
