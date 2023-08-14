@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework import status
+from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -12,7 +13,6 @@ from landlords.models import Landlord
 from .models import Listing
 from .permissions import IsLandlord, IsOwnerOrReadOnly
 from .serializers import ListingSerializer
-from rest_framework.pagination import LimitOffsetPagination
 
 
 class NewListingView(generics.CreateAPIView):
@@ -117,3 +117,14 @@ class LikeListingView(APIView):
 		return Response(status= status.HTTP_200_OK, data= {
 			"detail": f"You have {action} this listing",
 		})
+
+
+class MyLikedListingsView(generics.ListAPIView):
+	"""
+	Get all listings liked by the current user
+	"""
+	permission_classes = [permissions.IsAuthenticated]
+	serializer_class = ListingSerializer
+
+	def get_queryset(self):
+		return self.request.user.liked_listings.all()
