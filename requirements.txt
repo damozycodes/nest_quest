@@ -11,11 +11,13 @@ Django==4.2.3
 django-allauth==0.54.0
 djangorestframework==3.14.0
 drf-spectacular==0.26.4
+gunicorn==21.2.0
 idna==3.4
 inflection==0.5.1
 jsonschema==4.19.0
 jsonschema-specifications==2023.7.1
 oauthlib==3.2.2
+packaging==23.1
 psycopg2-binary==2.9.6
 pycparser==2.21
 PyJWT==2.8.0
