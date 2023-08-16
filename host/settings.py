@@ -15,6 +15,7 @@ from pathlib import Path
 
 import dj_database_url
 from dotenv import load_dotenv
+import cloudinary
 
 load_dotenv()
 
@@ -28,6 +29,11 @@ DATABASE_URL = os.getenv('DATABASE_URL')
 
 ALLOWED_HOSTS = ["*"]
 
+cloudinary.config(
+    cloud_name= os.environ.get('CLOUDINARY_NAME'),
+    api_key=os.environ.get("CLOUDINARY_APIKEY"),
+    api_secret=os.environ.get("CLOUDINARY_SECRET")
+)
 
 # Application definition
 

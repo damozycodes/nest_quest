@@ -4,7 +4,9 @@ from django.contrib.auth.models import AbstractUser, _
 from django.db import models
 from django.urls import reverse
 
-from users import validators 
+from users import validators
+from cloudinary.models import CloudinaryField
+from cloudinary import utils as cloudinary_utils
 
 
 class User(AbstractUser):
@@ -28,15 +30,24 @@ class User(AbstractUser):
 	)
 
 	first_name = models.CharField(
-		_("first name"), 
+		_("first name"),
 		max_length=150,
 		validators= [name_validator],
 	)
 
 	last_name = models.CharField(
-		_("last name"), 
+		_("last name"),
 		max_length=150,
 		validators= [name_validator],
+	)
+
+	default_profile_picture_url = 'media/profile_picture/profile_picture.png'
+
+	profile_picture = CloudinaryField(
+		resource_type='image',
+		default=default_profile_picture_url,
+		blank=True,
+		null=True
 	)
 
 	USERNAME_FIELD = "email"
@@ -45,6 +56,12 @@ class User(AbstractUser):
 
 	def is_landlord(self):
 		return hasattr(self, "landlord")
-	
+
 	def get_absolute_url(self):
 		return reverse("user", kwargs={"pk": self.pk})
+
+	def get_secure_profile_picture_url(self):
+		if self.profile_picture:
+			url, options = cloudinary_utils.cloudinary_url(self.profile_picture.public_id, secure=True)
+			return url
+		return None
