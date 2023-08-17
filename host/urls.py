@@ -27,6 +27,7 @@ urlpatterns = [
     path("landlord/", include("landlords.urls")),
     path("listings/", include("listings.urls")),
     path("reviews/", include("reviews.urls")),
+    path("matchings/", include("matchings.urls")),
 
     path('admin/', admin.site.urls),
     path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),

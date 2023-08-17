@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "landlords",
     "listings",
     "reviews",
+    "matchings",
 ]
 
 MIDDLEWARE = [
