@@ -6,11 +6,12 @@ Authentication:
 - [x] SignUp
 - [x] Change password
 - [ ] Reset Password
+- [x] add user profile picture
+
 
 Landlord:
 - [x] Create Landlord
 - [x] Get/Update Landlord
-- [ ] Get the rating of a landlord
 
 Listing:
 - [x] Create Listing
@@ -20,14 +21,17 @@ Listing:
 - [x] Get all listings for a particular landlord
 - [x] Get a user's favorite listings
 - [x] Search/filter listings
+- [x] Get the rating of a listing
+- [ ] Add listing images
 
 Listing Review:
 - [x] Create Review
+- [x] Inspect an existing review
 - [x] Get All Review of a listing
-- [ ] Get the rating of a listing
+- [x] Get all reviews of a user
 
 Roommate Matching:
-- [ ] Create a new matching request
-- [ ] Get suggested roommates
-- [ ] Request contact with a suggested roommate
-- [ ] Accept request from potential roommate
+- [x] Create a new matching request
+- [x] Get suggested roommates on existing request
+- [x] Update an existing matching request
+- [x] Opt out from a matching request

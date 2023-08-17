@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 DATABASE_URL = os.getenv('DATABASE_URL')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 cloudinary.config(
     cloud_name= os.environ.get('CLOUDINARY_NAME'),
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     "allauth",
     "allauth.account",
+    "corsheaders",
     "dj_rest_auth",
     "dj_rest_auth.registration",
     "rest_framework",
@@ -58,13 +59,16 @@ INSTALLED_APPS = [
     "landlords",
     "listings",
     "reviews",
+    "matchings",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -154,3 +158,12 @@ SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8000',
+]
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = "mails"
