@@ -6,7 +6,7 @@ Authentication:
 - [x] SignUp
 - [x] Change password
 - [ ] Reset Password
-- [ ] add user profile picture
+- [x] add user profile picture
 
 
 Landlord:
@@ -31,7 +31,7 @@ Listing Review:
 - [x] Get all reviews of a user
 
 Roommate Matching:
-- [ ] Create a new matching request
-- [ ] Get suggested roommates on existing request
-- [ ] Update an existing matching request
-- [ ] Opt out from a matching request
+- [x] Create a new matching request
+- [x] Get suggested roommates on existing request
+- [x] Update an existing matching request
+- [x] Opt out from a matching request
