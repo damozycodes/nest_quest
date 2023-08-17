@@ -9,6 +9,8 @@ class ListingSerializer(ModelSerializer):
 	rating = serializers.DecimalField(max_digits=3, decimal_places=1)
 	likes = SerializerMethodField()
 	is_liked = SerializerMethodField()
+	listing_image_url = serializers.SerializerMethodField()
+
 
 	def get_likes(self, obj):
 		return obj.likes.count()
@@ -20,3 +22,6 @@ class ListingSerializer(ModelSerializer):
 		model = Listing
 		fields = "__all__"
 		read_only_fields = ["landlord", "likes", "created", "updated", "is_liked"]
+
+	def get_listing_image_url(self, obj):
+		return obj.get_secure_listing_image_url()
