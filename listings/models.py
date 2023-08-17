@@ -3,6 +3,9 @@ import uuid
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.urls import reverse
+from cloudinary.models import CloudinaryField
+from cloudinary import utils as cloudinary_utils
+
 
 
 class Listing(models.Model):
@@ -68,6 +71,15 @@ class Listing(models.Model):
 	total_ratings = models.PositiveIntegerField(default=0)
 	rating = models.DecimalField(max_digits=3, decimal_places=1, default=0)
 
+	default_listing_image_public_id = 'vduayichretpeiu1yg3x'
+
+	listing_image = CloudinaryField(
+		resource_type='image',
+		default=default_listing_image_public_id,
+		blank=True,
+		null=True
+	)
+
 	class Meta:
 		ordering = ["-updated", "-created"]
 
@@ -83,3 +95,9 @@ class Listing(models.Model):
 		else:
 			self.rating = 0
 		super().save(*args, **kwargs)
+
+	def get_secure_listing_image_url(self):
+		if self.listing_image:
+			url, options = cloudinary_utils.cloudinary_url(self.listing_image.public_id, secure=True)
+			return url
+		return None

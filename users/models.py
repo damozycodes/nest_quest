@@ -41,11 +41,11 @@ class User(AbstractUser):
 		validators= [name_validator],
 	)
 
-	default_profile_picture_url = 'media/profile_picture/profile_picture.png'
+	default_profile_picture_public_id = 'h4xrbsve4pkqkxkqsw0j'
 
 	profile_picture = CloudinaryField(
 		resource_type='image',
-		default=default_profile_picture_url,
+		default=default_profile_picture_public_id,
 		blank=True,
 		null=True
 	)

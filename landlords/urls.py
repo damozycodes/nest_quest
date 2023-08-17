@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import create_landlord, landlord_info
+from . import views
 
-
+app_name = "landlord"
 urlpatterns = [
-    path('signup/', create_landlord, name='create_landlord'),
-    path("", landlord_info, name='landlord_info'),
+    path('signup/', views.CreateLandlordView.as_view(), name='signup'),
+    path("", views.LandlordInfoView.as_view(), name='landlord'),
 ]
