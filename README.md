@@ -1,4 +1,4 @@
-This is the backend for NestQuesst, a platform that is supposed to make locating apartments more convenient by implementing robust search algorithms and roomate matching features.
+This is the backend for NestQuest, a platform that is supposed to make locating apartments more convenient by implementing robust search algorithms and roomate matching features.
 
 
 # Features
