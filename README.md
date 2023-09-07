@@ -1,4 +1,5 @@
-# Nest Quest Endpoints
+This is the backend for NestQuesst, a platform that is supposed to make locating apartments more convenient by implementing robust search algorithms and roomate matching features.
+
 
 # Features
 Authentication:
@@ -22,7 +23,7 @@ Listing:
 - [x] Get a user's favorite listings
 - [x] Search/filter listings
 - [x] Get the rating of a listing
-- [ ] Add listing images
+- [x] Add listing images
 
 Listing Review:
 - [x] Create Review
